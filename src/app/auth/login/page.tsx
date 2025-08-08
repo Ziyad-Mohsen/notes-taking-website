@@ -5,7 +5,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Loader2 } from "lucide-react";
+import { revalidatePath } from "next/cache";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import { useTransition } from "react";
 import { toast } from "sonner";
 
@@ -20,6 +22,8 @@ export default function LoginPage() {
           toast.error(error);
         } else {
           toast.success("logged in successfully");
+          revalidatePath("/", "layout");
+          redirect("/");
         }
       } catch (error) {
         console.log("error in signup", error);
