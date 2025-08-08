@@ -36,6 +36,7 @@ export default function NoteCard({ note }: NoteProps) {
       } catch (err) {
         toast.error("Failed to update note");
         setNewNote(initialNote);
+        console.log("Error in edit note", err);
       }
     });
   };
@@ -47,6 +48,7 @@ export default function NoteCard({ note }: NoteProps) {
       toast.success("Note deleted");
     } catch (err) {
       toast.error("Failed to delete note");
+      console.log("Error in delete note", err);
     } finally {
       setIsDeleting(false);
     }

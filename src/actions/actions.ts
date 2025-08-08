@@ -25,11 +25,13 @@ export async function login(formData: FormData) {
   };
   const { error } = await supabase.auth.signInWithPassword(data);
   if (error) {
-    redirect(`/error?message=${error.message}`);
+    console.log("error in login server action", error);
+    return error.message;
   }
-
-  revalidatePath("/", "layout");
-  redirect("/");
+  if (!error) {
+    revalidatePath("/", "layout");
+    redirect("/");
+  }
 }
 
 export async function signup(formData: FormData) {
@@ -42,10 +44,14 @@ export async function signup(formData: FormData) {
   };
   const { error } = await supabase.auth.signUp(data);
   if (error) {
-    redirect(`/error?message=${error.message}`);
+    console.log("error in signup server action", error);
+    return error.message;
   }
-  revalidatePath("/", "layout");
-  redirect("/");
+
+  if (!error) {
+    revalidatePath("/", "layout");
+    redirect("/");
+  }
 }
 
 export async function signOut() {
@@ -54,7 +60,8 @@ export async function signOut() {
   const { error } = await supabase.auth.signOut();
 
   if (error) {
-    redirect(`/error?message=${error}`);
+    console.log("error in signout server action", error);
+    return error.message;
   }
 
   revalidatePath("/");

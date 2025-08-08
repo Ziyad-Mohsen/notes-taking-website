@@ -19,7 +19,7 @@ export default function LogoutButton() {
     startTransition(async () => {
       try {
         await signOut();
-        toast.success("logged out");
+        toast.success("Logged out");
       } catch (error) {
         console.log("Error in sign out", error);
         toast.error("Failed to logout");

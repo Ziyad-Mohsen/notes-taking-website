@@ -28,7 +28,7 @@ export default async function Home() {
               </p>
               <div className="flex justify-center">
                 <Link
-                  href="/login"
+                  href="/auth/login"
                   className={cn(
                     buttonVariants({ variant: "secondary", size: "lg" }),
                     "text-bold"

@@ -1,15 +1,12 @@
 import Link from "next/link";
 import { buttonVariants } from "../ui/button";
-import ThemeToggler from "./ThemeToggler";
-import { createClient } from "@/utils/supabase/server";
+import ThemeToggler from "../ui/ThemeToggler";
 import LogoutButton from "./LogoutButton";
+import { getAuthUser } from "@/actions/actions";
+import UserInfo from "./UserInfo";
 
 export default async function Header() {
-  const supabase = await createClient();
-
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  const user = await getAuthUser();
 
   return (
     <header className="bg-accent shadow-lg fixed top-0 left-0 w-full">
@@ -17,13 +14,16 @@ export default async function Header() {
         <Link href="/" className="text-2xl">
           NoteIt
         </Link>
-        <div className="flex gap-2">
+        <div className="flex items-center gap-2">
           <ThemeToggler />
           {user ? (
-            <LogoutButton />
+            <>
+              <UserInfo user={user} />
+              <LogoutButton />
+            </>
           ) : (
             <Link
-              href="/login"
+              href="/auth/login"
               className={buttonVariants({ variant: "outline" })}
             >
               login
