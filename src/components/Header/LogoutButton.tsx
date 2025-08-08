@@ -1,29 +1,68 @@
 "use client";
 
-import { LogOut } from "lucide-react";
+import { Loader2, LogOut } from "lucide-react";
 import { Button } from "../ui/button";
-import { createClient } from "@/utils/supabase/client";
-import { redirect } from "next/navigation";
+import { useTransition } from "react";
+import { toast } from "sonner";
+import { signOut } from "@/actions/actions";
+import {
+  Popover,
+  PopoverClose,
+  PopoverContent,
+  PopoverTrigger,
+} from "@radix-ui/react-popover";
 
 export default function LogoutButton() {
-  const signOut = async () => {
-    const supabase = createClient();
-    const { error } = await supabase.auth.signOut();
+  const [isPending, startTransition] = useTransition();
 
-    if (error) {
-      console.log(error);
-    }
-
-    redirect("/login");
+  const handleSignOut = () => {
+    startTransition(async () => {
+      try {
+        await signOut();
+        toast.success("logged out");
+      } catch (error) {
+        console.log("Error in sign out", error);
+        toast.error("Failed to logout");
+      }
+    });
   };
 
   return (
-    <Button
-      variant="ghost"
-      className="hover:text-red-500 cursor-pointer"
-      onClick={signOut}
-    >
-      <LogOut />
-    </Button>
+    <Popover>
+      <PopoverTrigger asChild>
+        <Button variant="ghost" className="hover:text-red-500 cursor-pointer">
+          <LogOut />
+        </Button>
+      </PopoverTrigger>
+      <PopoverContent
+        sideOffset={8}
+        align="end"
+        className="bg-accent border-1 shadow-lg border-foreground p-5 rounded-2xl flex flex-col items-center gap-2"
+      >
+        <div className="text-xl font-semibold">Are you sure?</div>
+        <div className="flex gap-2">
+          <PopoverClose asChild>
+            <Button size="sm" className="cursor-pointer" disabled={isPending}>
+              Cancel
+            </Button>
+          </PopoverClose>
+          <Button
+            variant="destructive"
+            className="cursor-pointer"
+            disabled={isPending}
+            onClick={handleSignOut}
+            size="sm"
+          >
+            {isPending ? (
+              <>
+                <Loader2 className="animate-spin mr-2 h-4 w-4" /> Logging out..
+              </>
+            ) : (
+              "logout"
+            )}
+          </Button>
+        </div>
+      </PopoverContent>
+    </Popover>
   );
 }
