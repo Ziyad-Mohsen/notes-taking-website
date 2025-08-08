@@ -4,6 +4,8 @@ A simple and modern note-taking web application built with **Next.js**, **Supaba
 
 This project was built to **learn and explore Next.js with Supabase** as a backend.
 
+Live demo [here](https://notes-taking-website-delta.vercel.app/)
+
 ---
 
 ## 🚀 Tech Stack
