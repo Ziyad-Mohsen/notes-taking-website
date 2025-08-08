@@ -1,12 +1,16 @@
 import { useState } from "react";
 
+interface ColorPickerProps {
+  value?: string | null;
+  onChange?: (color: string) => void;
+  disabled?: boolean;
+}
+
 export default function ColorPicker({
   value,
   onChange,
-}: {
-  value?: string | null;
-  onChange?: (color: string) => void;
-}) {
+  disabled,
+}: ColorPickerProps) {
   const [color, setColor] = useState(value || "#000000");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -22,6 +26,7 @@ export default function ColorPicker({
       />
       <input
         type="color"
+        disabled={disabled}
         value={color}
         onChange={handleChange}
         className="w-0 h-0 opacity-0 overflow-hidden"

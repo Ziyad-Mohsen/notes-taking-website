@@ -1,47 +1,60 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, useTransition } from "react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "../ui/button";
-import { Pen, Trash, X } from "lucide-react";
+import { Pen, Trash, X, Loader2 } from "lucide-react";
 import { isEqual } from "lodash";
 import ColorPicker from "../ui/ColorPicker";
 import type { Note } from "@/types";
 import { deleteNote, updateNote } from "@/actions/actions";
+import { toast } from "sonner";
 
 interface NoteProps {
   note: Note;
 }
 
 export default function NoteCard({ note }: NoteProps) {
-  const initialNote = useMemo(() => {
-    return note;
-  }, [note]);
+  const initialNote = useMemo(() => note, [note]);
   const [newNote, setNewNote] = useState(initialNote);
-  const [editing, setEditing] = useState<boolean>(false);
+  const [editing, setEditing] = useState(false);
+  const [isPending, startTransition] = useTransition();
+  const [isDeleting, setIsDeleting] = useState(false);
 
-  const handleEditButtonClick = () => {
-    if (editing) {
-      setNewNote(initialNote); // reset edit
-      setEditing(false);
-    } else {
-      setEditing(true);
-    }
+  const handleEditToggle = () => {
+    setEditing((prev) => !prev);
+    if (editing) setNewNote(initialNote);
   };
 
-  const handleEditNote = async () => {
-    await updateNote(newNote, note.id);
-    setEditing(false);
+  const handleEditNote = () => {
+    startTransition(async () => {
+      try {
+        setEditing(false);
+        await updateNote(newNote, note.id);
+        toast.success("Note updated");
+      } catch (err) {
+        toast.error("Failed to update note");
+        setNewNote(initialNote);
+      }
+    });
   };
 
   const handleDeleteNote = async () => {
-    await deleteNote(note.id);
+    setIsDeleting(true);
+    try {
+      await deleteNote(note.id);
+      toast.success("Note deleted");
+    } catch (err) {
+      toast.error("Failed to delete note");
+    } finally {
+      setIsDeleting(false);
+    }
   };
 
   return (
     <div
-      className="mt-5 p-5 flex flex-col gap-2 rounded-lg"
+      className="mt-5 p-5 flex flex-col gap-2 rounded-lg transition-shadow hover:shadow"
       style={{
         backgroundColor: newNote.color ? `${newNote.color}70` : "var(--accent)",
       }}
@@ -53,7 +66,8 @@ export default function NoteCard({ note }: NoteProps) {
             onChange={(e) =>
               setNewNote((prev) => ({ ...prev, title: e.target.value }))
             }
-            className="text-[50px]"
+            disabled={isPending || isDeleting}
+            className="text-[24px] font-medium"
           />
         ) : (
           <h2 className="text-card-foreground text-2xl font-semibold">
@@ -62,50 +76,61 @@ export default function NoteCard({ note }: NoteProps) {
         )}
         <div className="flex items-center gap-1">
           {editing && (
-            <Button
-              variant="ghost"
-              size="icon"
-              className="cursor-pointer hover:text-red-500"
-            >
-              <ColorPicker
-                value={newNote.color}
-                onChange={(newColor) =>
-                  setNewNote((prev) => ({ ...prev, color: newColor }))
-                }
-              />
-            </Button>
+            <ColorPicker
+              value={newNote.color}
+              onChange={(color) => setNewNote((prev) => ({ ...prev, color }))}
+            />
           )}
           <Button
             variant="ghost"
             size="icon"
-            className="cursor-pointer hover:text-blue-500"
-            onClick={handleEditButtonClick}
+            onClick={handleEditToggle}
+            className="hover:text-blue-500 cursor-pointer"
+            disabled={isPending}
           >
             {editing ? <X /> : <Pen />}
           </Button>
           <Button
             variant="ghost"
             size="icon"
-            className="cursor-pointer hover:text-red-500"
             onClick={handleDeleteNote}
+            className="hover:text-red-500 cursor-pointer"
+            disabled={isDeleting}
           >
-            <Trash />
+            {isDeleting ? <Loader2 className="animate-spin" /> : <Trash />}
           </Button>
         </div>
       </div>
+
       {editing ? (
         <Textarea
           value={newNote.body}
           onChange={(e) =>
             setNewNote((prev) => ({ ...prev, body: e.target.value }))
           }
+          className="resize-none"
+          disabled={isPending || isDeleting}
         />
       ) : (
-        <p className="text-base text-card-foreground/50">{note.body}</p>
+        <p className="text-base text-card-foreground/60 whitespace-pre-line">
+          {note.body}
+        </p>
       )}
+
       {editing && !isEqual(newNote, initialNote) && (
-        <Button className="cursor-pointer" onClick={handleEditNote}>
-          Save
+        <Button
+          className="mt-2 cursor-pointer"
+          onClick={handleEditNote}
+          disabled={isPending}
+        >
+          {isPending ? (
+            <>
+              <Loader2 className="animate-spin mr-2 h-4 w-4" />
+              Saving...
+            </>
+          ) : (
+            "Save"
+          )}
         </Button>
       )}
     </div>
