@@ -28,6 +28,8 @@ export async function login(formData: FormData) {
     console.log("error in login server action", error);
     return error.message;
   }
+
+  revalidatePath("/", "layout");
 }
 
 export async function signup(formData: FormData) {
@@ -43,6 +45,8 @@ export async function signup(formData: FormData) {
     console.log("error in signup server action", error);
     return error.message;
   }
+
+  revalidatePath("/", "layout");
 }
 
 export async function signOut() {
