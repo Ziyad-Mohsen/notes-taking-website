@@ -9,7 +9,7 @@ export default async function Header() {
   const user = await getAuthUser();
 
   return (
-    <header className="bg-accent shadow-lg fixed top-0 left-0 w-full">
+    <header className="bg-secondary shadow-lg fixed top-0 left-0 w-full">
       <div className="container flex justify-between items-center py-5">
         <Link href="/" className="text-2xl">
           NoteIt
@@ -24,7 +24,7 @@ export default async function Header() {
           ) : (
             <Link
               href="/auth/login"
-              className={buttonVariants({ variant: "outline" })}
+              className={buttonVariants({ variant: "default" })}
             >
               login
             </Link>
