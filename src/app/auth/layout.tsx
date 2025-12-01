@@ -1,5 +1,5 @@
 import { getAuthUser } from "@/actions/actions";
-import ThemeToggler from "@/components/ui/ThemeToggler";
+import ThemeToggler from "@/components/ThemeToggler";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
