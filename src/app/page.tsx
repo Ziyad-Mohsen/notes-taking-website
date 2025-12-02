@@ -1,5 +1,6 @@
 import { getAuthUser, getNotes } from "@/actions/actions";
 import Hero from "@/components/landing/Hero";
+import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
 
 export default async function Home() {
@@ -10,6 +11,7 @@ export default async function Home() {
     <main>
       <Header />
       <Hero />
+      <Footer />
     </main>
   );
 }

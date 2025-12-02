@@ -221,4 +221,7 @@
   .header-margin {
     margin-top: 6rem;
   }
+  .section-padding {
+    padding-block: 5rem;
+  }
 }

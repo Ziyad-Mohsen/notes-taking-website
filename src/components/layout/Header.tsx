@@ -27,7 +27,7 @@ const navLinks: NavLink[] = [
 
 function Header() {
   return (
-    <header className="bg-background border-b border-primary/20 ">
+    <header className="bg-background border-b border-primary/20">
       <div className="container">
         <div className="py-3 flex items-center justify-between">
           <Link
