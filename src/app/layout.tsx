@@ -2,6 +2,11 @@ import type { Metadata } from "next";
 import "@/styles/globals.css";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 import { Toaster } from "sonner";
+import { Outfit } from "next/font/google";
+
+const outfit = Outfit({
+  weight: ["400", "600", "700", "800", "900"],
+});
 
 export const metadata: Metadata = {
   title: "Noqta",
@@ -15,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className={outfit.className} suppressHydrationWarning>
       <body>
         <ThemeProvider
           attribute="class"

@@ -11,3 +11,11 @@ export type NewNote = {
   body: string;
   color: string | null;
 };
+
+export type Feature = {
+  icon: React.ElementType;
+  title: string;
+  description: string;
+  iconBgColor?: string;
+  iconColor?: string;
+};

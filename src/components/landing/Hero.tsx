@@ -18,7 +18,7 @@ const featureTags: FeatureTag[] = [
 
 function Hero() {
   return (
-    <section className="relative min-h-screen bg-linear-to-br from-background via-gradient-1/90 via-40% to-background">
+    <section className="relative min-h-screen bg-linear-to-br from-background via-gradient-1/90 via-40% to-background border-b border-accent">
       <div className="h-full w-full bg-background/80 backdrop-blur-2xl flex items-center">
         <div className="container section-padding">
           {/* Hero Text */}

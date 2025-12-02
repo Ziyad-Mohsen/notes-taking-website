@@ -20,7 +20,13 @@ function Footer() {
         </div>
         <div>
           Built by{" "}
-          <Link href="https://github.com/Ziyad-Mohsen">Ziad Mohsen</Link>.
+          <Link
+            className="font-semibold"
+            href="https://github.com/Ziyad-Mohsen"
+          >
+            Ziad Mohsen
+          </Link>
+          .
         </div>
       </div>
     </section>
