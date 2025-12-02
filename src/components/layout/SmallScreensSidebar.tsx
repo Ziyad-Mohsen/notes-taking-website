@@ -2,18 +2,40 @@
 
 import { Button } from "@/components/ui/button";
 import { Menu, User, X } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { NavLink } from "./Header";
 import Link from "next/link";
 import { ROUTES } from "@/constants/routes";
 import ThemeToggler from "../ThemeToggler";
-import { Separator } from "@radix-ui/react-dropdown-menu";
 
 function SmallScreensSidebar({ navLinks }: { navLinks: NavLink[] }) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
+  useEffect(() => {
+    if (isOpen) {
+      // Disable scroll when sidebar is open
+      document.body.style.overflow = "hidden";
+    } else {
+      // Enable scroll when sidebar is closed
+      document.body.style.overflow = "auto";
+    }
+
+    function handleResize() {
+      const isSmallDevice = window.innerWidth < 768;
+      if (!isSmallDevice) {
+        setIsOpen(false);
+      }
+    }
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [isOpen]);
+
   return (
-    <div className="md:hidden">
+    <div className="relative md:hidden z-10">
       <div className="flex items-center">
         <ThemeToggler />
         <Button
