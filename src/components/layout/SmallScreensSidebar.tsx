@@ -19,6 +19,7 @@ function SmallScreensSidebar({ navLinks }: { navLinks: NavLink[] }) {
         <Button
           variant="ghost"
           className="cursor-pointer"
+          aria-label="open sidebar"
           onClick={() => {
             setIsOpen((state) => !state);
           }}
@@ -34,6 +35,7 @@ function SmallScreensSidebar({ navLinks }: { navLinks: NavLink[] }) {
         <Button
           variant="outline"
           className="cursor-pointer absolute top-3 end-3"
+          aria-label="close sidebar"
           onClick={() => {
             setIsOpen((state) => !state);
           }}

@@ -34,7 +34,12 @@ function Header() {
             href={ROUTES.ROOT}
             className="flex items-center gap-2 px-2 rounded-lg"
           >
-            <Image src="/logo.svg" alt={LogoName} width={38} height={38} />
+            <Image
+              src="/logo.svg"
+              alt="website logo svg image"
+              width={38}
+              height={38}
+            />
             <span className="text-xl font-bold text-foreground">
               {LogoName}
             </span>
