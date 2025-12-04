@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { Feature } from "@/types";
+import { Feature } from "@/types/landing.types";
 
 interface FeatureCardProps {
   feature: Feature;
