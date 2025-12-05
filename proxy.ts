@@ -1,9 +1,17 @@
 import { type NextRequest } from "next/server";
 import { updateSession } from "@/lib/supabase/middleware";
+import createMiddleware from "next-intl/middleware";
+import { defaultLocale, locales } from "@/i18n/config";
 
 export async function proxy(request: NextRequest) {
   return await updateSession(request);
 }
+
+export default createMiddleware({
+  locales,
+  defaultLocale,
+  localePrefix: "never",
+});
 
 export const config = {
   matcher: [
