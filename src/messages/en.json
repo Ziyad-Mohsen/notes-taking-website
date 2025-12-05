@@ -1,0 +1,84 @@
+{
+  "metadata": {
+    "title": "Noqta",
+    "description": "Noqta is a powerful yet simple note-taking app designed for clarity and productivity. Capture ideas, organize thoughts, and never lose track of what's important."
+  },
+  "layout": {
+    "header": {
+      "logo": "Noqta",
+      "navLinks": {
+        "contact": "Contact",
+        "faqs": "FAQs",
+        "github": "Github"
+      },
+      "login": "Login",
+      "signup": "Signup"
+    },
+    "footer": {
+      "logo": "Noqta",
+      "rights": "All rights reserved.",
+      "builtBy": "Built by",
+      "developerName": "Ziad Mohsen"
+    }
+  },
+  "pages": {
+    "landing": {
+      "hero": {
+        "tagline": "Your thoughts, beautifully organized",
+        "headline": "Your Second Brain, ",
+        "headlineHighlight": "Reimagined.",
+        "description": "Noqta is a powerful yet simple note-taking app designed for clarity and productivity. Capture ideas, organize thoughts, and never lose track of what's important.",
+        "ctaPrimary": "Get Started",
+        "ctaSecondary": "Explore Features",
+        "features": {
+          "autoSave": "Auto Save",
+          "privacyFirst": "Privacy-first",
+          "darkMode": "Dark Mode",
+          "beautifulUI": "Beautiful UI"
+        }
+      },
+      "features": {
+        "title": "Powerful Features",
+        "description": "Everything you need to capture, organize, and find your notes effortlessly.",
+        "items": {
+          "quickNoteCreation": {
+            "title": "Quick Note Creation",
+            "description": "Create notes instantly with auto-save. Never lose your thoughts again."
+          },
+          "powerfulSearch": {
+            "title": "Powerful Search",
+            "description": "Find any note in seconds by searching titles, content, or tags."
+          },
+          "smartOrganization": {
+            "title": "Smart Organization",
+            "description": "Organize with folders, tags, and custom colors for visual clarity."
+          },
+          "builtInTodos": {
+            "title": "Built-in To-Dos",
+            "description": "Create checklists within notes to track tasks and stay productive."
+          },
+          "richTextEditor": {
+            "title": "Rich Text Editor",
+            "description": "Format your notes with bold, italic, headings, lists, and code blocks."
+          },
+          "pinFavorite": {
+            "title": "Pin & Favorite",
+            "description": "Keep important notes at the top and mark favorites for quick access."
+          },
+          "darkMode": {
+            "title": "Dark Mode",
+            "description": "Seamless dark/light theme switching for comfortable note-taking anytime."
+          },
+          "smartTrash": {
+            "title": "Smart Trash",
+            "description": "Deleted notes stay in trash for 30 days before permanent removal."
+          },
+          "keyboardShortcuts": {
+            "title": "Keyboard Shortcuts",
+            "description": "Power-user shortcuts: Ctrl+N for new note, Ctrl+K for search, and more."
+          }
+        }
+      }
+    }
+  }
+}

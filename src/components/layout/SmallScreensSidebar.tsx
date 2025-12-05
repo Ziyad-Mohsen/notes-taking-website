@@ -7,9 +7,12 @@ import { NavLink } from "./Header";
 import Link from "next/link";
 import { ROUTES } from "@/constants/routes";
 import ThemeToggler from "../ThemeToggler";
+import ChangeLanguage from "../ChangeLanguage";
+import { useTranslations } from "next-intl";
 
 function SmallScreensSidebar({ navLinks }: { navLinks: NavLink[] }) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const t = useTranslations("layout.header");
 
   useEffect(() => {
     if (isOpen) {
@@ -35,8 +38,9 @@ function SmallScreensSidebar({ navLinks }: { navLinks: NavLink[] }) {
   }, [isOpen]);
 
   return (
-    <div className="relative md:hidden z-10">
+    <div className="relative lg:hidden z-10">
       <div className="flex items-center">
+        <ChangeLanguage />
         <ThemeToggler />
         <Button
           variant="ghost"
@@ -90,14 +94,14 @@ function SmallScreensSidebar({ navLinks }: { navLinks: NavLink[] }) {
           <Button variant="outline" asChild>
             <Link href={ROUTES.LOGIN}>
               <User />
-              Login
+              {t("login")}
             </Link>
           </Button>
           <Button
             asChild
             className="hover:shadow-lg hover:scale-105 transition-all bg-linear-to-br from-gradient-1 to-gradient-2 hover:bg-linear-to-bl"
           >
-            <Link href={ROUTES.SIGNUP}>Signup</Link>
+            <Link href={ROUTES.SIGNUP}>{t("signup")}</Link>
           </Button>
         </div>
       </div>

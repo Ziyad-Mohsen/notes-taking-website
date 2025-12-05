@@ -7,7 +7,7 @@ function HeroDemo() {
       className="w-full md:w-3/4 mx-auto rounded-t-lg shadow-2xl h-100 bg-background/50 backdrop-blur-3xl border overflow-hidden"
     >
       <div className="border-b h-8 flex items-center px-2 bg-secondary">
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 w-fit">
           <div className="w-3 h-3 rounded-full bg-red-500" />
           <div className="w-3 h-3 rounded-full bg-yellow-500" />
           <div className="w-3 h-3 rounded-full bg-green-500" />

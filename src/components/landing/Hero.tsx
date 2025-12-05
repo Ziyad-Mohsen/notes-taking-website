@@ -3,20 +3,26 @@ import Link from "next/link";
 import { ROUTES } from "@/constants/routes";
 import { ArrowRight, Lock, Moon, Save, Sparkles } from "lucide-react";
 import HeroDemo from "./HeroDemo";
+import { getTranslations } from "next-intl/server";
 
 type FeatureTag = {
   icon: React.ElementType;
   text: string;
 };
 
-const featureTags: FeatureTag[] = [
-  { icon: Save, text: "Auto Save" },
-  { icon: Lock, text: "Privacy-first" },
-  { icon: Moon, text: "Dark Mode" },
-  { icon: Sparkles, text: "Beautiful UI" },
-];
+function getFeaturesTags(t): FeatureTag[] {
+  return [
+    { icon: Save, text: t("features.autoSave") },
+    { icon: Lock, text: t("features.privacyFirst") },
+    { icon: Moon, text: t("features.darkMode") },
+    { icon: Sparkles, text: t("features.beautifulUI") },
+  ];
+}
 
-function Hero() {
+async function Hero() {
+  const t = await getTranslations("pages.landing.hero");
+  const featuresTags = getFeaturesTags(t);
+
   return (
     <section className="relative min-h-screen bg-linear-to-br from-background via-gradient-1/90 via-40% to-background border-b border-accent">
       <div className="h-full w-full bg-background/80 backdrop-blur-2xl flex items-center">
@@ -25,18 +31,16 @@ function Hero() {
           <div className="flex flex-col items-center mb-10">
             <div className="flex flex-col items-center gap-5 text-center">
               <div className="rounded-full border bg-primary/10 text-primary py-2 px-3">
-                Your thoughts, beautifully organized
+                {t("tagline")}
               </div>
               <h1 className="text-5xl font-bold text-foreground">
-                Your Second Brain,{" "}
+                {t("headline")}
                 <span className="bg-linear-to-br from-gradient-1 to-gradient-2 bg-clip-text text-transparent">
-                  Reimagined.
+                  {t("headlineHighlight")}
                 </span>
               </h1>
               <p className="max-w-[600px] min-w-full text-muted-foreground text-lg leading-8">
-                Noqta is a powerful yet simple note-taking app designed for
-                clarity and productivity. Capture ideas, organize thoughts, and
-                never lose track of what's important.
+                {t("description")}
               </p>
               <div className="flex max-md:flex-col items-center gap-2">
                 <Button
@@ -45,10 +49,10 @@ function Hero() {
                   className="group hover:shadow-lg transition-shadow bg-linear-to-br from-gradient-1 to-gradient-2 hover:bg-linear-to-bl text-lg"
                 >
                   <Link href={ROUTES.SIGNUP}>
-                    Get Started{" "}
+                    {t("ctaPrimary")}
                     <ArrowRight
                       strokeWidth={2}
-                      className="group-hover:translate-x-1 transition-transform"
+                      className="group-hover:translate-x-1 transition-transform rtl:rotate-180 rtl:group-hover:-translate-x-1"
                     />
                   </Link>
                 </Button>
@@ -58,11 +62,11 @@ function Hero() {
                   variant="outline"
                   className="bg-background hover:bg-background/30 shadow-none border text-lg text-muted-foreground"
                 >
-                  <Link href={ROUTES.SIGNUP}>Explore Features</Link>
+                  <Link href={ROUTES.SIGNUP}>{t("ctaSecondary")}</Link>
                 </Button>
               </div>
               <div className="hidden md:flex items-center gap-4">
-                {featureTags.map((tag, i) => {
+                {featuresTags.map((tag, i) => {
                   const Icon = tag.icon;
                   return (
                     <div

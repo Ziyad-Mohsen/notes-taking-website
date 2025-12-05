@@ -2,35 +2,50 @@ import type { Metadata } from "next";
 import "@/styles/globals.css";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 import { Toaster } from "sonner";
-import { Outfit } from "next/font/google";
+import { Cairo, Outfit } from "next/font/google";
+import { NextIntlClientProvider } from "next-intl";
+import { getLocale, getMessages, getTranslations } from "next-intl/server";
+import { cn } from "@/lib/utils";
 
+// Latin font
 const outfit = Outfit({
   weight: ["400", "600", "700", "800", "900"],
 });
 
-export const metadata: Metadata = {
-  title: "Noqta",
-  description:
-    "Noqta is a powerful yet simple note-taking app designed for clarity and productivity. Capture ideas, organize thoughts, and never lose track of what's important.",
-};
+// Arabic font
+const cairo = Cairo({
+  weight: ["400", "600", "700", "800", "900"],
+});
 
-export default function RootLayout({
+export async function generateMetadata() {
+  const t = await getTranslations("metadata");
+  return {
+    title: t("title"),
+    description: t("description"),
+  };
+}
+
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const messages = await getMessages();
+  const locale = await getLocale();
+
   return (
-    <html lang="en" className={outfit.className} suppressHydrationWarning>
-      <body>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <Toaster />
-          {children}
-        </ThemeProvider>
+    <html
+      lang={locale}
+      dir={locale === "ar" ? "rtl" : "ltr"}
+      suppressHydrationWarning
+    >
+      <body className={cn(locale == "ar" ? cairo.className : outfit.className)}>
+        <NextIntlClientProvider messages={messages}>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            <Toaster />
+            {children}
+          </ThemeProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   );
