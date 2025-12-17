@@ -4,4 +4,6 @@ export enum ROUTES {
   SIGNUP = "/auth/signup",
   CONTACT = "/contact",
   FAQS = "/faqs",
+  TERMS = "/terms",
+  PRIVACY = "/privacy",
 }

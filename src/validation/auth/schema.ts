@@ -3,7 +3,17 @@ import * as z from "zod";
 // Fields
 const nameSchema = z
   .string()
-  .max(32, "first name must be at most 32 characters");
+  .min(1, "Name field is required")
+  .max(32, "first name must be at most 32 characters")
+  .nonoptional();
+const usernameSchema = z
+  .string()
+  .min(3, "Username must be at least 3 characters")
+  .max(32, "Username must me at most 32 characters")
+  .regex(
+    /^[a-zA-Z0-9_]+$/,
+    "Only letters, numbers, and underscores are allowed"
+  );
 const emailSchema = z
   .string()
   .regex(
@@ -24,14 +34,20 @@ const passwordSchema = z
   .refine((val) => !/\s/.test(val), {
     message: "Password cannot contain spaces.",
   });
+const avatarSchema = z.instanceof(ArrayBuffer).or(z.string()).nullable();
 
 // Forms
 export const SignupFormSchema = z
   .object({
     name: nameSchema,
+    username: usernameSchema,
     email: emailSchema,
     password: passwordSchema,
-    confirmPassword: passwordSchema,
+    confirmPassword: z.string(),
+    avatar: avatarSchema,
+    acceptedTerms: z.boolean().refine((val) => val === true, {
+      message: "You must accept the terms of service and privacy policy",
+    }),
   })
   .superRefine((val, ctx) => {
     if (val.password !== val.confirmPassword) {
@@ -49,5 +65,6 @@ export const SigninFormSchema = z.object({
 });
 
 // types
-export type SignupFormSchemaType = z.infer<typeof SignupFormSchema>;
-export type SigninFormSchemaType = z.infer<typeof SigninFormSchema>;
+export type SignupFormSchema = z.infer<typeof SignupFormSchema>;
+export type SigninFormSchema = z.infer<typeof SigninFormSchema>;
+export type AvatarSchemaType = z.infer<typeof avatarSchema>;

@@ -1,3 +1,4 @@
-import { features } from "./features";
+import { getFeatures } from "./features";
+import { primaryDefaultAvatar, defaultAvatarsPaths } from "./defaultAvatars";
 
-export { features };
+export { primaryDefaultAvatar, defaultAvatarsPaths, getFeatures };

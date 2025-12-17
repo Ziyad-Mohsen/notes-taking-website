@@ -20,7 +20,10 @@ const cairo = Cairo({
 export async function generateMetadata() {
   const t = await getTranslations("metadata");
   return {
-    title: t("title"),
+    title: {
+      default: t("title"),
+      template: `${t("title")} | %s`,
+    },
     description: t("description"),
   };
 }

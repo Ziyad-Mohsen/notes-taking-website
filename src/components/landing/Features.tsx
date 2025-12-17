@@ -1,6 +1,6 @@
 import FeatureCard from "./FeatureCard";
 import { getTranslations } from "next-intl/server";
-import { getFeatures } from "@/constants/features";
+import { getFeatures } from "@/constants";
 
 async function Features() {
   const t = await getTranslations("pages.landing.features");

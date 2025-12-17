@@ -79,6 +79,75 @@
           }
         }
       }
+    },
+    "auth": {
+      "signup": {
+        "header": "Welcome to noqta",
+        "steps": {
+          "enterInfo": "Enter your info",
+          "uploadAvatar": "Upload your avatar",
+          "termsPrivacy": "Terms & Privacy"
+        },
+        "fields": {
+          "name": "Name",
+          "namePlaceholder": "John Doe",
+          "username": "Username",
+          "usernamePlaceholder": "john.doe",
+          "email": "Email",
+          "emailPlaceholder": "you@example.com",
+          "password": "Password",
+          "passwordPlaceholder": "••••••••",
+          "confirmPassword": "Confirm Password",
+          "confirmPasswordPlaceholder": "••••••••"
+        },
+        "buttons": {
+          "back": "Back",
+          "next": "Next",
+          "createAccount": "Create account",
+          "or": "or",
+          "alreadyHaveAccount": "Already have account?",
+          "login": "Login"
+        },
+        "avatar": {
+          "fileTypes": "JPG, PNG or GIF. Max size 1MB",
+          "orChooseDefault": "or choose a default",
+          "defaultAvatars": "Default avatars"
+        },
+        "imageCrop": {
+          "title": "Crop Your Image",
+          "description": "Adjust the crop area to select the portion of your image you want to use. You can resize and reposition the crop box as needed.",
+          "applyCrop": "Apply Crop",
+          "reset": "Reset",
+          "cancel": "Cancel",
+          "noImageSelected": "No image selected. Please select an image file first."
+        },
+        "terms": {
+          "readAndAccept": "Please read and accept our terms of service and privacy policy to continue.",
+          "termsOfService": "Terms of Service",
+          "termsContent": "By using our service, you agree to comply with our terms of service. You are responsible for maintaining the confidentiality of your account and password. You agree to accept responsibility for all activities that occur under your account.",
+          "privacyPolicy": "Privacy Policy",
+          "privacyContent": "We respect your privacy and are committed to protecting your personal data. We collect and use your information only as necessary to provide our services. We do not sell your personal information to third parties.",
+          "acceptTerms": "I accept the",
+          "and": "and"
+        },
+        "validation": {
+          "nameRequired": "Name field is required",
+          "nameMaxLength": "Name must be at most 32 characters",
+          "usernameMinLength": "Username must be at least 3 characters",
+          "usernameMaxLength": "Username must be at most 32 characters",
+          "usernameInvalid": "Only letters, numbers, and underscores are allowed",
+          "emailInvalid": "Invalid email address.",
+          "passwordMinLength": "Password must be at least 8 characters.",
+          "passwordMaxLength": "Password is too long.",
+          "passwordUppercase": "Password must contain at least one uppercase letter.",
+          "passwordLowercase": "Password must contain at least one lowercase letter.",
+          "passwordNumber": "Password must contain at least one number.",
+          "passwordSpecial": "Password must contain at least one special character.",
+          "passwordSpaces": "Password cannot contain spaces.",
+          "passwordsNotMatch": "The passwords did not match",
+          "mustAcceptTerms": "You must accept the terms of service and privacy policy"
+        }
+      }
     }
   }
 }
