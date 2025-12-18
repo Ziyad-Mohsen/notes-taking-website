@@ -5,7 +5,7 @@ import AuthHeader from "../AuthHeader";
 import { FormProvider, Path, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FieldGroup } from "@/components/ui/field";
-import { ArrowRight, User } from "lucide-react";
+import { ArrowRight, Loader2, User } from "lucide-react";
 import { Fragment, useMemo, useState } from "react";
 import { Button, buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
@@ -34,31 +34,38 @@ function SignupForm() {
     },
   });
 
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [currentStep, setCurrentStep] = useState<number>(1);
   const steps = useMemo<SignupFormStep[]>(
     () =>
       [
         {
           title: t("steps.enterInfo"),
-          component: <UserInfoFields />,
+          component: UserInfoFields,
           fields: ["name", "username", "email", "password", "confirmPassword"],
         },
         {
           title: t("steps.uploadAvatar"),
-          component: <AvatarSelector />,
+          component: AvatarSelector,
           fields: ["avatar"],
         },
         {
           title: t("steps.termsPrivacy"),
-          component: <AcceptTerms />,
+          component: AcceptTerms,
           fields: ["acceptedTerms"],
         },
       ] as const,
     [t]
   );
 
-  async function handleSignUp(data: SignupFormSchema) {
-    console.log(data);
+  async function handleSignUp(formData: SignupFormSchema) {
+    setIsLoading(true);
+    await new Promise((res) => {
+      setTimeout(() => {
+        setIsLoading(false);
+        res(console.log(formData));
+      }, 5000);
+    });
   }
 
   const handleNextStep = async (stepFields: Path<SignupFormSchema>[]) => {
@@ -85,7 +92,10 @@ function SignupForm() {
         >
           <Fragment>
             <FieldGroup className="gap-3 text-start">
-              {steps[currentStep].component}
+              {steps.map((step, i) => {
+                const StepComponent = step.component;
+                return <StepComponent key={i} isActive={currentStep === i} />;
+              })}
             </FieldGroup>
           </Fragment>
         </form>
@@ -112,13 +122,15 @@ function SignupForm() {
           )}
           {currentStep === steps.length - 1 && (
             <Button
-              disabled={!form.formState.isValid}
+              disabled={!form.formState.isValid || isLoading}
               className="ms-auto"
               type="button"
               onClick={form.handleSubmit(handleSignUp)}
             >
-              {t("buttons.createAccount")}
-              <User />
+              {t("buttons.createAccount", {
+                loading: isLoading ? "true" : "false",
+              })}
+              {isLoading ? <Loader2 className="animate-spin" /> : <User />}
             </Button>
           )}
         </div>

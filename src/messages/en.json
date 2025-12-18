@@ -104,7 +104,7 @@
         "buttons": {
           "back": "Back",
           "next": "Next",
-          "createAccount": "Create account",
+          "createAccount": "{loading, select, true {Creating account ...} false {Create account} other {Create account} }",
           "or": "or",
           "alreadyHaveAccount": "Already have account?",
           "login": "Login"

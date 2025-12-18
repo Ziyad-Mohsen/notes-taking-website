@@ -12,7 +12,11 @@ import { Input } from "@/components/ui/input";
 import ImageCropModal from "./ImageCropModal";
 import { useTranslations } from "next-intl";
 
-function AvatarSelector() {
+interface AvatarSelectorProps {
+  isActive?: boolean;
+}
+
+function AvatarSelector({ isActive = true }: AvatarSelectorProps) {
   const t = useTranslations("pages.auth.signup.avatar");
   const [selectedAvatar, setSelectedAvatar] =
     useState<AvatarSchemaType>(primaryDefaultAvatar);
@@ -26,7 +30,6 @@ function AvatarSelector() {
 
   useEffect(() => {
     form.setValue("avatar", selectedAvatar);
-    console.log(form.getValues());
   }, [selectedAvatar]);
 
   async function handleImageCrop(base64String: string) {
@@ -61,6 +64,8 @@ function AvatarSelector() {
     setSelectedFile(null);
     setCroppedImage(null);
   }
+
+  if (!isActive) return null;
 
   return (
     <div className="space-y-8">
@@ -126,9 +131,9 @@ function AvatarSelector() {
               <div className="flex items-center justify-center h-20" key={path}>
                 <Avatar
                   className={cn(
-                    "w-18 h-18 cursor-pointer box-content",
+                    "w-18 h-18 cursor-pointer box-content transition-all",
                     path === selectedAvatar &&
-                      "border-4 border-primary shadow-primary"
+                      "border-4 border-primary shadow-lg shadow-primary/50"
                   )}
                   onClick={() => selectDefaultAvatar(path)}
                 >

@@ -104,7 +104,7 @@
         "buttons": {
           "back": "رجوع",
           "next": "التالي",
-          "createAccount": "إنشاء حساب",
+          "createAccount": "{loading, select, true {جاري إنشاء الحساب ...} false {إنشاء حساب} other {إنشاء حساب} }",
           "or": "أو",
           "alreadyHaveAccount": "لديك حساب بالفعل؟",
           "login": "تسجيل الدخول"

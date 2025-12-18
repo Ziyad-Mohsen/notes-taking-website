@@ -16,9 +16,10 @@ function StepsIndicator({
         {steps.map((step, i) => {
           return (
             <Fragment key={i}>
+              {/* Circle */}
               <div
                 className={cn(
-                  "w-5 h-5 rounded-full flex items-center justify-center p-4",
+                  "w-5 h-5 rounded-full flex items-center justify-center p-4 transition-colors",
                   currentStep >= i
                     ? "bg-primary text-primary-foreground"
                     : "bg-secondary text-secondary-foreground"
@@ -26,10 +27,12 @@ function StepsIndicator({
               >
                 <div>{currentStep <= i ? i + 1 : <Check size={18} />}</div>
               </div>
+
+              {/* Line */}
               {i < steps.length - 1 && (
                 <div
                   className={cn(
-                    "w-10 h-1 rounded-lg",
+                    "w-10 h-1 rounded-lg transition-colors",
                     currentStep > i ? "bg-primary" : "bg-secondary"
                   )}
                 />

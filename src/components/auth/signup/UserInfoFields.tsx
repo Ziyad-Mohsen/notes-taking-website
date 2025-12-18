@@ -5,12 +5,18 @@ import { useTranslations } from "next-intl";
 import { AtSignIcon, Eye, EyeClosed, User } from "lucide-react";
 import { useState } from "react";
 
-function UserInfoFields() {
+interface UserInfoFieldsProps {
+  isActive?: boolean;
+}
+
+function UserInfoFields({ isActive = true }: UserInfoFieldsProps) {
   const form = useFormContext<SignupFormSchema>();
   const t = useTranslations("pages.auth.signup");
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [showConfirmPassword, setShowConfirmPassword] =
     useState<boolean>(false);
+
+  if (!isActive) return null;
 
   return (
     <>

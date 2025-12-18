@@ -7,9 +7,15 @@ import Link from "next/link";
 import { SignupFormSchema } from "@/validation/auth/schema";
 import { useTranslations } from "next-intl";
 
-function AcceptTerms() {
+interface AcceptTermsProps {
+  isActive?: boolean;
+}
+
+function AcceptTerms({ isActive = true }: AcceptTermsProps) {
   const t = useTranslations("pages.auth.signup.terms");
   const form = useFormContext<SignupFormSchema>();
+
+  if (!isActive) return null;
 
   return (
     <div className="space-y-4">
