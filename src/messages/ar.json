@@ -81,6 +81,7 @@
       }
     },
     "auth": {
+      "layout": { "homeLink": "الرئيسية" },
       "signup": {
         "header": "مرحباً بك في نقطة",
         "steps": {
@@ -130,7 +131,7 @@
           "acceptTerms": "أوافق على",
           "and": "و"
         },
-        "validation": {
+        "errors": {
           "nameRequired": "حقل الاسم مطلوب",
           "nameMaxLength": "يجب أن يكون الاسم 32 حرفاً كحد أقصى",
           "usernameMinLength": "يجب أن يكون اسم المستخدم 3 أحرف على الأقل",

@@ -21,7 +21,7 @@ import { useTranslations } from "next-intl";
 function SignupForm() {
   const t = useTranslations("pages.auth.signup");
   const form = useForm<SignupFormSchema>({
-    resolver: zodResolver(SignupFormSchema),
+    resolver: zodResolver(SignupFormSchema(t)),
     mode: "onChange",
     defaultValues: {
       name: "",

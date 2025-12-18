@@ -81,6 +81,7 @@
       }
     },
     "auth": {
+      "layout": { "homeLink": "Home" },
       "signup": {
         "header": "Welcome to noqta",
         "steps": {
@@ -130,7 +131,7 @@
           "acceptTerms": "I accept the",
           "and": "and"
         },
-        "validation": {
+        "errors": {
           "nameRequired": "Name field is required",
           "nameMaxLength": "Name must be at most 32 characters",
           "usernameMinLength": "Username must be at least 3 characters",

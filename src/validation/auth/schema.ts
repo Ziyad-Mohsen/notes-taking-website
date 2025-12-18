@@ -1,63 +1,67 @@
 import * as z from "zod";
+import { TFn } from "./types";
 
 // Fields
-const nameSchema = z
-  .string()
-  .min(1, "Name field is required")
-  .max(32, "first name must be at most 32 characters")
-  .nonoptional();
-const usernameSchema = z
-  .string()
-  .min(3, "Username must be at least 3 characters")
-  .max(32, "Username must me at most 32 characters")
-  .regex(
-    /^[a-zA-Z0-9_]+$/,
-    "Only letters, numbers, and underscores are allowed"
-  );
-const emailSchema = z
-  .string()
-  .regex(
-    /^[a-zA-Z0-9._%+-]+@(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,15}$/,
-    "Invalid email address."
-  );
-const passwordSchema = z
-  .string()
-  .min(8, "Password must be at least 8 characters.")
-  .max(100, "Password is too long.")
-  .regex(/[A-Z]/, "Password must contain at least one uppercase letter.")
-  .regex(/[a-z]/, "Password must contain at least one lowercase letter.")
-  .regex(/[0-9]/, "Password must contain at least one number.")
-  .regex(
-    /[^A-Za-z0-9]/,
-    "Password must contain at least one special character."
-  )
-  .refine((val) => !/\s/.test(val), {
-    message: "Password cannot contain spaces.",
-  });
+const nameSchema = (t: TFn) =>
+  z
+    .string()
+    .min(1, t("errors.nameRequired"))
+    .max(32, t("errors.nameMaxLength"))
+    .nonoptional();
+
+const usernameSchema = (t: TFn) =>
+  z
+    .string()
+    .min(3, t("errors.usernameMinLength"))
+    .max(32, t("errors.usernameMaxLength"))
+    .regex(/^[a-zA-Z0-9_]+$/, t("errors.usernameInvalid"));
+
+const emailSchema = (t: TFn) =>
+  z
+    .string()
+    .regex(
+      /^[a-zA-Z0-9._%+-]+@(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,15}$/,
+      t("errors.emailInvalid")
+    );
+
+const passwordSchema = (t: TFn) =>
+  z
+    .string()
+    .min(8, t("errors.passwordMinLength"))
+    .max(100, t("errors.passwordMaxLength"))
+    .regex(/[A-Z]/, t("errors.passwordUppercase"))
+    .regex(/[a-z]/, t("errors.passwordLowercase"))
+    .regex(/[0-9]/, t("errors.passwordNumber"))
+    .regex(/[^A-Za-z0-9]/, t("errors.passwordSpecial"))
+    .refine((val) => !/\s/.test(val), {
+      message: t("errors.passwordSpaces"),
+    });
+
 const avatarSchema = z.instanceof(ArrayBuffer).or(z.string()).nullable();
 
 // Forms
-export const SignupFormSchema = z
-  .object({
-    name: nameSchema,
-    username: usernameSchema,
-    email: emailSchema,
-    password: passwordSchema,
-    confirmPassword: z.string(),
-    avatar: avatarSchema,
-    acceptedTerms: z.boolean().refine((val) => val === true, {
-      message: "You must accept the terms of service and privacy policy",
-    }),
-  })
-  .superRefine((val, ctx) => {
-    if (val.password !== val.confirmPassword) {
-      ctx.addIssue({
-        code: "custom",
-        message: "The passwords did not match",
-        path: ["confirmPassword"],
-      });
-    }
-  });
+export const SignupFormSchema = (t: TFn) =>
+  z
+    .object({
+      name: nameSchema(t),
+      username: usernameSchema(t),
+      email: emailSchema(t),
+      password: passwordSchema(t),
+      confirmPassword: z.string(),
+      avatar: avatarSchema,
+      acceptedTerms: z.boolean().refine((val) => val === true, {
+        message: t("errors.mustAcceptTerms"),
+      }),
+    })
+    .superRefine((val, ctx) => {
+      if (val.password !== val.confirmPassword) {
+        ctx.addIssue({
+          code: "custom",
+          message: t("errors.passwordsNotMatch"),
+          path: ["confirmPassword"],
+        });
+      }
+    });
 
 export const SigninFormSchema = z.object({
   email: emailSchema,
@@ -65,6 +69,6 @@ export const SigninFormSchema = z.object({
 });
 
 // types
-export type SignupFormSchema = z.infer<typeof SignupFormSchema>;
+export type SignupFormSchema = z.infer<ReturnType<typeof SignupFormSchema>>;
 export type SigninFormSchema = z.infer<typeof SigninFormSchema>;
 export type AvatarSchemaType = z.infer<typeof avatarSchema>;
