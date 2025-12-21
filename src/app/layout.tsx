@@ -45,7 +45,7 @@ export default async function RootLayout({
       <body className={cn(locale == "ar" ? cairo.className : outfit.className)}>
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            <Toaster />
+            <Toaster richColors />
             {children}
           </ThemeProvider>
         </NextIntlClientProvider>

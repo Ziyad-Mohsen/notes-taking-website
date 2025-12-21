@@ -1,3 +1,5 @@
+import SignInForm from "@/components/auth/login/SignInForm";
+
 export default function LoginPage() {
-  return <div>signin</div>;
+  return <SignInForm />;
 }

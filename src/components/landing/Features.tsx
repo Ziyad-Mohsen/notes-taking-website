@@ -7,7 +7,7 @@ async function Features() {
   const features = getFeatures(t);
 
   return (
-    <section className="section-padding">
+    <section id="features" className="section-padding">
       <div className="container space-y-10">
         <div className="flex flex-col gap-2 items-center text-center">
           <h2 className="text-2xl text-foreground font-semibold">

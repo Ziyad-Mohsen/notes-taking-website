@@ -2,14 +2,14 @@ import { useFormContext } from "react-hook-form";
 import InputField from "../InputField";
 import { SignupFormSchema } from "@/validation/auth/schema";
 import { useTranslations } from "next-intl";
-import { AtSignIcon, Eye, EyeClosed, User } from "lucide-react";
+import { Eye, EyeClosed, Lock, User } from "lucide-react";
 import { useState } from "react";
 
 interface UserInfoFieldsProps {
   isActive?: boolean;
 }
 
-function UserInfoFields({ isActive = true }: UserInfoFieldsProps) {
+function SignupCredentialFields({ isActive = true }: UserInfoFieldsProps) {
   const form = useFormContext<SignupFormSchema>();
   const t = useTranslations("pages.auth.signup");
   const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -20,20 +20,6 @@ function UserInfoFields({ isActive = true }: UserInfoFieldsProps) {
 
   return (
     <>
-      <InputField
-        form={form}
-        name="name"
-        label={t("fields.name")}
-        placeholder={t("fields.namePlaceholder")}
-        startIcon={<User />}
-      />
-      <InputField
-        form={form}
-        name="username"
-        label={t("fields.username")}
-        placeholder={t("fields.usernamePlaceholder")}
-        startIcon={<AtSignIcon />}
-      />
       <InputField
         form={form}
         name="email"
@@ -47,7 +33,7 @@ function UserInfoFields({ isActive = true }: UserInfoFieldsProps) {
         type={showPassword ? "text" : "password"}
         label={t("fields.password")}
         placeholder={t("fields.passwordPlaceholder")}
-        startIcon={<User />}
+        startIcon={<Lock />}
         inputButton={{
           component: showPassword ? <Eye /> : <EyeClosed />,
           onClick: () => {
@@ -61,7 +47,7 @@ function UserInfoFields({ isActive = true }: UserInfoFieldsProps) {
         type={showConfirmPassword ? "text" : "password"}
         label={t("fields.confirmPassword")}
         placeholder={t("fields.confirmPasswordPlaceholder")}
-        startIcon={<User />}
+        startIcon={<Lock />}
         inputButton={{
           component: showConfirmPassword ? <Eye /> : <EyeClosed />,
           onClick: () => {
@@ -73,4 +59,4 @@ function UserInfoFields({ isActive = true }: UserInfoFieldsProps) {
   );
 }
 
-export default UserInfoFields;
+export default SignupCredentialFields;

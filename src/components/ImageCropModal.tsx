@@ -29,7 +29,7 @@ function ImageCropModal({
   onCrop,
   onCancel,
 }: ImageCropModalProps) {
-  const t = useTranslations("pages.auth.signup.imageCrop");
+  const t = useTranslations("modals.imageCrop");
   const hasValidFile = selectedFile && selectedFile instanceof File;
 
   return (

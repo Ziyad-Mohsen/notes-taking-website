@@ -4,6 +4,7 @@ import { ROUTES } from "@/constants/routes";
 import { ArrowRight, Lock, Moon, Save, Sparkles } from "lucide-react";
 import HeroDemo from "./HeroDemo";
 import { getTranslations } from "next-intl/server";
+import { createClient } from "@/lib/supabase/server";
 
 type FeatureTag = {
   icon: React.ElementType;
@@ -22,6 +23,10 @@ function getFeaturesTags(t): FeatureTag[] {
 async function Hero() {
   const t = await getTranslations("pages.landing.hero");
   const featuresTags = getFeaturesTags(t);
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
   return (
     <section className="relative min-h-screen bg-linear-to-br from-background via-gradient-1/90 via-40% to-background border-b border-accent">
@@ -48,7 +53,7 @@ async function Hero() {
                   size="xl"
                   className="group hover:shadow-lg transition-shadow bg-linear-to-br from-gradient-1 to-gradient-2 hover:bg-linear-to-bl text-lg"
                 >
-                  <Link href={ROUTES.SIGNUP}>
+                  <Link href={user ? ROUTES.WORKSPACE : ROUTES.SIGNUP}>
                     {t("ctaPrimary")}
                     <ArrowRight
                       strokeWidth={2}
@@ -62,7 +67,7 @@ async function Hero() {
                   variant="outline"
                   className="bg-background hover:bg-background/30 shadow-none border text-lg text-muted-foreground"
                 >
-                  <Link href={ROUTES.SIGNUP}>{t("ctaSecondary")}</Link>
+                  <Link href="#features">{t("ctaSecondary")}</Link>
                 </Button>
               </div>
               <div className="hidden md:flex items-center gap-4">

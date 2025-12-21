@@ -1,15 +1,18 @@
-import { base64ToArrayBuffer, cn } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 import { useFormContext } from "react-hook-form";
 import { defaultAvatarsPaths, primaryDefaultAvatar } from "@/constants";
 import Image from "next/image";
 import { Avatar } from "@/components/ui/avatar";
 import { AvatarImage } from "@radix-ui/react-avatar";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
-import { AvatarSchemaType, SignupFormSchema } from "@/validation/auth/schema";
+import {
+  AvatarSchemaType,
+  CompleteProfileSchema,
+} from "@/validation/auth/schema";
 import { Button } from "@/components/ui/button";
 import { XIcon } from "lucide-react";
 import { Input } from "@/components/ui/input";
-import ImageCropModal from "./ImageCropModal";
+import ImageCropModal from "@/components/ImageCropModal";
 import { useTranslations } from "next-intl";
 
 interface AvatarSelectorProps {
@@ -26,17 +29,15 @@ function AvatarSelector({ isActive = true }: AvatarSelectorProps) {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const form = useFormContext<SignupFormSchema>();
+  const form = useFormContext<CompleteProfileSchema>();
 
   useEffect(() => {
     form.setValue("avatar", selectedAvatar);
   }, [selectedAvatar]);
 
   async function handleImageCrop(base64String: string) {
-    const base64 = base64String.split("base64,")[1];
-    const arrayBuffer = base64ToArrayBuffer(base64);
     setCroppedImage(base64String);
-    setSelectedAvatar(arrayBuffer);
+    setSelectedAvatar(base64String);
   }
 
   function handleReset() {
@@ -75,11 +76,7 @@ function AvatarSelector({ isActive = true }: AvatarSelectorProps) {
             <Image
               alt="Cropped"
               height={100}
-              src={
-                (typeof selectedAvatar === "string" && selectedAvatar) ||
-                croppedImage ||
-                primaryDefaultAvatar
-              }
+              src={selectedAvatar || primaryDefaultAvatar}
               unoptimized
               width={100}
             />

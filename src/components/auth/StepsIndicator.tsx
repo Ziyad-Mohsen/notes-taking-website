@@ -1,13 +1,13 @@
 import React, { Fragment } from "react";
-import { SignupFormStep } from "./types";
+import { FormStep } from "./signup/types";
 import { cn } from "@/lib/utils";
 import { Check } from "lucide-react";
 
-function StepsIndicator({
+function StepsIndicator<FormSchema>({
   steps,
   currentStep,
 }: {
-  steps: SignupFormStep[];
+  steps: FormStep<FormSchema>[];
   currentStep: number;
 }) {
   return (
