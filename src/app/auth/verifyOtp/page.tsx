@@ -2,7 +2,6 @@ import VerifyOtpForm from "@/components/auth/verifyOtp/VerifyOtpForm";
 import { ROUTES } from "@/constants/routes";
 import { emailSchema } from "@/validation/auth/schema";
 import { EmailOtpType } from "@supabase/supabase-js";
-import { getTranslations } from "next-intl/server";
 import { redirect } from "next/navigation";
 
 const EMAIL_OTP_TYPES: EmailOtpType[] = [
