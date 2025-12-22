@@ -1,5 +1,4 @@
-import { features } from "./features";
+import { getFeatures } from "./features";
+import { primaryDefaultAvatar, defaultAvatarsPaths } from "./defaultAvatars";
 
-const LogoName = "Noqta";
-
-export { LogoName, features };
+export { primaryDefaultAvatar, defaultAvatarsPaths, getFeatures };

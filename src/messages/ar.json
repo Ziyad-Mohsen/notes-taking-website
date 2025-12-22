@@ -1,0 +1,225 @@
+{
+  "metadata": {
+    "title": "نقطة",
+    "description": "نقطة هو تطبيق ملاحظات قوي وبسيط مصمم للوضوح والإنتاجية. التقط الأفكار، نظمها، ولا تفقد ما هو مهم."
+  },
+  "layout": {
+    "header": {
+      "logo": "نقطة",
+      "navLinks": {
+        "contact": "تواصل",
+        "faqs": "الأسئلة الشائعة",
+        "github": "جيت هب",
+        "workspace": "بيئة العمل"
+      },
+      "profile": {
+        "greetings": "أهلاً بك👋"
+      },
+      "login": "تسجيل الدخول",
+      "signup": "إنشاء حساب"
+    },
+    "footer": {
+      "logo": "نقطة",
+      "rights": "جميع الحقوق محفوظة.",
+      "builtBy": "تم التطوير بواسطة",
+      "developerName": "زياد محسن"
+    }
+  },
+  "modals": {
+    "imageCrop": {
+      "title": "قص صورتك",
+      "description": "اضبط منطقة القص لتحديد الجزء الذي تريد استخدامه من صورتك. يمكنك تغيير حجم مربع القص وإعادة وضعه حسب الحاجة.",
+      "applyCrop": "تطبيق القص",
+      "reset": "إعادة تعيين",
+      "cancel": "إلغاء",
+      "noImageSelected": "لم يتم اختيار صورة. يرجى اختيار ملف صورة أولاً."
+    }
+  },
+  "pages": {
+    "landing": {
+      "hero": {
+        "tagline": "أفكارك، منظمة بشكل جميل",
+        "headline": "عقلك الثاني، ",
+        "headlineHighlight": "بإعادة تخيل.",
+        "description": "نقطة هو تطبيق ملاحظات قوي وبسيط مصمم للوضوح والإنتاجية. التقط الأفكار، نظمها، ولا تفقد ما هو مهم.",
+        "ctaPrimary": "ابدأ الآن",
+        "ctaSecondary": "استكشف المميزات",
+        "features": {
+          "autoSave": "حفظ تلقائي",
+          "privacyFirst": "الخصوصية أولاً",
+          "darkMode": "الوضع الداكن",
+          "beautifulUI": "واجهة جميلة"
+        }
+      },
+      "features": {
+        "title": "مميزات قوية",
+        "description": "كل ما تحتاجه لالتقاط وتنظيم والعثور على ملاحظاتك بسهولة.",
+        "items": {
+          "quickNoteCreation": {
+            "title": "إنشاء ملاحظات بسرعة",
+            "description": "أنشئ ملاحظات فورًا مع الحفظ التلقائي. لن تفقد أفكارك بعد الآن."
+          },
+          "powerfulSearch": {
+            "title": "بحث قوي",
+            "description": "اعثر على أي ملاحظة خلال ثوانٍ عبر البحث في العناوين أو المحتوى أو الوسوم."
+          },
+          "smartOrganization": {
+            "title": "تنظيم ذكي",
+            "description": "نظم ملاحظاتك باستخدام المجلدات والوسوم والألوان المخصصة لرؤية أوضح."
+          },
+          "builtInTodos": {
+            "title": "مهام مدمجة",
+            "description": "أنشئ قوائم مهام داخل الملاحظات لتتبع أعمالك وزيادة الإنتاجية."
+          },
+          "richTextEditor": {
+            "title": "محرر نصوص متقدم",
+            "description": "نسّق ملاحظاتك بالخط العريض والمائل والعناوين والقوائم وكتل الأكواد."
+          },
+          "pinFavorite": {
+            "title": "التثبيت والمفضلة",
+            "description": "احتفظ بالملاحظات المهمة في الأعلى وضع المفضلة للوصول السريع."
+          },
+          "darkMode": {
+            "title": "الوضع الداكن",
+            "description": "تبديل سلس بين الوضع الداكن والفاتح لتجربة تدوين مريحة في أي وقت."
+          },
+          "smartTrash": {
+            "title": "سلة ذكية",
+            "description": "الملاحظات المحذوفة تبقى في السلة لمدة 30 يومًا قبل حذفها نهائيًا."
+          },
+          "keyboardShortcuts": {
+            "title": "اختصارات لوحة المفاتيح",
+            "description": "اختصارات للمستخدمين المتقدمين: Ctrl+N لملاحظة جديدة، Ctrl+K للبحث، والمزيد."
+          }
+        }
+      }
+    },
+    "auth": {
+      "layout": { "homeLink": "الرئيسية" },
+      "login": {
+        "header": "مرحباً بعودتك",
+        "subtext": "أدخل بريدك الإلكتروني وكلمة المرور",
+        "buttons": {
+          "login": "{loading, select, true {جاري تسجيل الدخول…} false {تسجيل الدخول} other {تسجيل الدخول} }",
+          "or": "أو",
+          "noAccount": "ليس لديك حساب؟",
+          "signup": "إنشاء حساب"
+        },
+        "fields": {
+          "name": "الاسم",
+          "namePlaceholder": "أحمد محمد",
+          "username": "اسم المستخدم",
+          "usernamePlaceholder": "ahmed.mohamed",
+          "email": "البريد الإلكتروني",
+          "emailPlaceholder": "you@example.com",
+          "password": "كلمة المرور",
+          "passwordPlaceholder": "••••••••",
+          "confirmPassword": "تأكيد كلمة المرور",
+          "confirmPasswordPlaceholder": "••••••••"
+        },
+        "errors": {
+          "emailInvalid": "عنوان البريد الإلكتروني غير صالح.",
+          "passwordRequired": "حقل كلمة المرور مطلوب",
+          "mustAcceptTerms": "يجب الموافقة على شروط الخدمة وسياسة الخصوصية"
+        }
+      },
+      "signup": {
+        "header": "مرحباً بك في نقطة",
+        "steps": {
+          "enterInfo": "اختر طريقة إنشاء الحساب",
+          "termsPrivacy": "الشروط والخصوصية"
+        },
+        "fields": {
+          "name": "الاسم",
+          "namePlaceholder": "أحمد محمد",
+          "username": "اسم المستخدم",
+          "usernamePlaceholder": "ahmed.mohamed",
+          "email": "البريد الإلكتروني",
+          "emailPlaceholder": "you@example.com",
+          "password": "كلمة المرور",
+          "passwordPlaceholder": "••••••••",
+          "confirmPassword": "تأكيد كلمة المرور",
+          "confirmPasswordPlaceholder": "••••••••"
+        },
+        "buttons": {
+          "back": "رجوع",
+          "next": "التالي",
+          "createAccount": "{loading, select, true {جاري إنشاء الحساب…} false {إنشاء حساب} other {إنشاء حساب} }",
+          "or": "أو",
+          "alreadyHaveAccount": "لديك حساب بالفعل؟",
+          "login": "تسجيل الدخول"
+        },
+        "avatar": {
+          "fileTypes": "JPG أو PNG أو GIF. الحد الأقصى للحجم 1 ميجابايت",
+          "orChooseDefault": "أو اختر صورة افتراضية",
+          "defaultAvatars": "الصور الافتراضية"
+        },
+        "terms": {
+          "readAndAccept": "يرجى قراءة والموافقة على شروط الخدمة وسياسة الخصوصية للمتابعة.",
+          "termsOfService": "شروط الخدمة",
+          "termsContent": "باستخدام خدمتنا، أنت توافق على الالتزام بشروط الخدمة الخاصة بنا.",
+          "privacyPolicy": "سياسة الخصوصية",
+          "privacyContent": "نحن نحترم خصوصيتك ولا نبيع بياناتك لأطراف ثالثة.",
+          "acceptTerms": "أوافق على",
+          "and": "و"
+        },
+        "errors": {
+          "emailInvalid": "عنوان بريد إلكتروني غير صالح.",
+          "passwordMinLength": "يجب أن تكون كلمة المرور 8 أحرف على الأقل.",
+          "passwordMaxLength": "كلمة المرور طويلة جداً.",
+          "passwordUppercase": "يجب أن تحتوي كلمة المرور على حرف كبير واحد على الأقل.",
+          "passwordLowercase": "يجب أن تحتوي كلمة المرور على حرف صغير واحد على الأقل.",
+          "passwordNumber": "يجب أن تحتوي كلمة المرور على رقم واحد على الأقل.",
+          "passwordSpecial": "يجب أن تحتوي كلمة المرور على حرف خاص واحد على الأقل.",
+          "passwordSpaces": "لا يمكن أن تحتوي كلمة المرور على مسافات.",
+          "passwordsNotMatch": "كلمات المرور غير متطابقة",
+          "mustAcceptTerms": "يجب الموافقة على الشروط وسياسة الخصوصية"
+        }
+      },
+      "verifyOtp": {
+        "header": "تحقق من بريدك الإلكتروني",
+        "subtext": "أدخل الرمز المكون من 6 أرقام المرسل إلى هذا البريد الإلكتروني: {email}",
+        "buttons": {
+          "verify": "{loading, select, true {جاري التحقق…} false {تحقق من الرمز} other {تحقق من الرمز} }",
+          "resend": "إعادة الإرسال"
+        },
+        "footer": {
+          "noCode": "لم تستلم الرمز؟"
+        },
+        "toasts": {
+          "codeSent": "تم إرسال رمز OTP جديد"
+        }
+      },
+      "completeProfile": {
+        "header": "أكمل ملفك الشخصي",
+        "steps": {
+          "userInfo": "ادخل معلومات ملفك الشخصي",
+          "uploadAvatar": "اختر صورتك"
+        },
+        "fields": {
+          "name": "الاسم",
+          "namePlaceholder": "أحمد محمد",
+          "username": "اسم المستخدم",
+          "usernamePlaceholder": "ahmed.mohamed"
+        },
+        "buttons": {
+          "back": "رجوع",
+          "next": "التالي",
+          "createAccount": "{loading, select, true {إبدأ…} false {إبدأ} other {إبدأ} }"
+        },
+        "avatar": {
+          "fileTypes": "JPG أو PNG أو GIF. الحد الأقصى للحجم 1 ميجابايت",
+          "orChooseDefault": "أو اختر صورة افتراضية",
+          "defaultAvatars": "الصور الافتراضية"
+        },
+        "errors": {
+          "nameRequired": "حقل الاسم مطلوب",
+          "nameMaxLength": "يجب ألا يزيد الاسم عن 32 حرفًا",
+          "usernameMinLength": "يجب أن يكون اسم المستخدم 3 أحرف على الأقل",
+          "usernameMaxLength": "يجب ألا يزيد اسم المستخدم عن 32 حرفًا",
+          "usernameInvalid": "يُسمح فقط بالأحرف والأرقام والشرطة السفلية"
+        }
+      }
+    }
+  }
+}
