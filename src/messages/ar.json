@@ -9,7 +9,11 @@
       "navLinks": {
         "contact": "تواصل",
         "faqs": "الأسئلة الشائعة",
-        "github": "جيت هب"
+        "github": "جيت هب",
+        "workspace": "بيئة العمل"
+      },
+      "profile": {
+        "greetings": "أهلاً بك👋"
       },
       "login": "تسجيل الدخول",
       "signup": "إنشاء حساب"

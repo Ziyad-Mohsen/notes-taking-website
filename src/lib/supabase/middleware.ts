@@ -29,7 +29,7 @@ export async function updateSession(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
   if (user && pathname.startsWith("/auth")) {
-    return NextResponse.redirect(new URL(ROUTES.ROOT, request.url));
+    return NextResponse.redirect(new URL(ROUTES.WORKSPACE, request.url));
   }
 
   if (!user && pathname.startsWith("/workspace")) {

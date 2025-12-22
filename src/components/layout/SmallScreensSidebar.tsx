@@ -9,8 +9,16 @@ import { ROUTES } from "@/constants/routes";
 import ThemeToggler from "../ThemeToggler";
 import ChangeLanguage from "../ChangeLanguage";
 import { useTranslations } from "next-intl";
+import { UserProfile } from "@/types/user.types";
+import UserAvatar from "../UserAvatar";
 
-function SmallScreensSidebar({ navLinks }: { navLinks: NavLink[] }) {
+function SmallScreensSidebar({
+  profile,
+  navLinks,
+}: {
+  navLinks: NavLink[];
+  profile: UserProfile | null;
+}) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const t = useTranslations("layout.header");
 
@@ -40,8 +48,16 @@ function SmallScreensSidebar({ navLinks }: { navLinks: NavLink[] }) {
   return (
     <div className="relative lg:hidden z-10">
       <div className="flex items-center">
-        <ChangeLanguage />
-        <ThemeToggler />
+        {profile && (
+          <div className="flex items-center gap-2">
+            <UserAvatar src={profile.avatar_url} name={profile.name} />
+            <div className="flex flex-col text-sm">
+              <span className="text-foreground">{t("profile.greetings")}</span>
+              <span className="text-muted-foreground">{profile.name}</span>
+            </div>
+          </div>
+        )}
+
         <Button
           variant="ghost"
           className="cursor-pointer"
@@ -68,6 +84,11 @@ function SmallScreensSidebar({ navLinks }: { navLinks: NavLink[] }) {
         >
           <X />
         </Button>
+        <div className="absolute top-3 start-3 bg-muted text-muted-foreground border rounded-lg">
+          <ChangeLanguage />
+          <ThemeToggler />
+        </div>
+
         {navLinks.map((link, i) => {
           return (
             <Button asChild key={i} variant="ghost" className="w-full">
@@ -83,27 +104,31 @@ function SmallScreensSidebar({ navLinks }: { navLinks: NavLink[] }) {
           );
         })}
 
-        <div
-          role="separator"
-          aria-orientation="horizontal"
-          aria-disabled
-          className="w-full h-px bg-secondary rounded-lg"
-        />
+        {!profile && (
+          <>
+            <div
+              role="separator"
+              aria-orientation="horizontal"
+              aria-disabled
+              className="w-full h-px bg-secondary rounded-lg"
+            />
 
-        <div className="flex items-center ms-4 gap-4 text-muted-foreground">
-          <Button variant="outline" asChild>
-            <Link href={ROUTES.LOGIN}>
-              <User />
-              {t("login")}
-            </Link>
-          </Button>
-          <Button
-            asChild
-            className="hover:shadow-lg hover:scale-105 transition-all bg-linear-to-br from-gradient-1 to-gradient-2 hover:bg-linear-to-bl"
-          >
-            <Link href={ROUTES.SIGNUP}>{t("signup")}</Link>
-          </Button>
-        </div>
+            <div className="flex items-center ms-4 gap-4 text-muted-foreground">
+              <Button variant="outline" asChild>
+                <Link href={ROUTES.LOGIN}>
+                  <User />
+                  {t("login")}
+                </Link>
+              </Button>
+              <Button
+                asChild
+                className="hover:shadow-lg hover:scale-105 transition-all bg-linear-to-br from-gradient-1 to-gradient-2 hover:bg-linear-to-bl"
+              >
+                <Link href={ROUTES.SIGNUP}>{t("signup")}</Link>
+              </Button>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

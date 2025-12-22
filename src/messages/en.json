@@ -9,7 +9,11 @@
       "navLinks": {
         "contact": "Contact",
         "faqs": "FAQs",
-        "github": "Github"
+        "github": "Github",
+        "workspace": "Workspace"
+      },
+      "profile": {
+        "greetings": "Welcome👋"
       },
       "login": "Login",
       "signup": "Signup"
