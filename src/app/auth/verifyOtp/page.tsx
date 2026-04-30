@@ -21,7 +21,7 @@ export default async function VerifyOtp({
   const { type, email } = await searchParams;
 
   // @ts-ignore
-  const result = emailSchema().safeParse({ email });
+  const result = emailSchema().safeParse(email);
   const isValidEmail = result.success;
 
   if (!type || !EMAIL_OTP_TYPES.includes(type) || !email || !isValidEmail) {

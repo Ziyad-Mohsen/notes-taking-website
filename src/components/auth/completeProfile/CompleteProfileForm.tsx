@@ -5,7 +5,7 @@ import AuthHeader from "@/components/auth/AuthHeader";
 import { FormProvider, Path, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FieldGroup } from "@/components/ui/field";
-import { ArrowRight, Loader2, UserCheck } from "lucide-react";
+import { ArrowRight, UserCheck } from "lucide-react";
 import { useState, useTransition } from "react";
 import { Button } from "@/components/ui/button";
 import { FormStep } from "@/components/auth/signup/types";
@@ -16,6 +16,7 @@ import UserInfoFields from "@/components/auth/completeProfile/UserInfoFields";
 import { useRouter } from "next/navigation";
 import { completeProfile } from "@/actions/auth/completeProfile.action";
 import { toast } from "sonner";
+import { Spinner } from "@/components/ui/Spinner";
 
 function CompleteProfileForm() {
   const t = useTranslations("pages.auth.completeProfile");
@@ -123,7 +124,7 @@ function CompleteProfileForm() {
               {t("buttons.createAccount", {
                 loading: isPending ? "true" : "false",
               })}
-              {isPending ? <Loader2 className="animate-spin" /> : <UserCheck />}
+              {isPending ? <Spinner /> : <UserCheck />}
             </Button>
           )}
         </div>

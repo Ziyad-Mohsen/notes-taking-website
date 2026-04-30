@@ -5,7 +5,7 @@ import AuthHeader from "../AuthHeader";
 import { FormProvider, Path, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FieldGroup } from "@/components/ui/field";
-import { ArrowRight, Loader2, User } from "lucide-react";
+import { ArrowRight, User } from "lucide-react";
 import { useState, useTransition } from "react";
 import { Button, buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
@@ -18,6 +18,7 @@ import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 import { signup } from "@/actions/auth/signup.action";
+import { Spinner } from "@/components/ui/Spinner";
 
 function SignupForm() {
   const t = useTranslations("pages.auth.signup");
@@ -127,7 +128,7 @@ function SignupForm() {
               {t("buttons.createAccount", {
                 loading: isPending ? "true" : "false",
               })}
-              {isPending ? <Loader2 className="animate-spin" /> : <User />}
+              {isPending ? <Spinner /> : <User />}
             </Button>
           )}
         </div>

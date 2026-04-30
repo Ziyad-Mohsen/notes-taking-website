@@ -6,7 +6,6 @@ import {
   SquareChartGantt,
   User,
 } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import ThemeToggler from "../ThemeToggler";
@@ -15,6 +14,7 @@ import ChangeLanguage from "../ChangeLanguage";
 import { getTranslations } from "next-intl/server";
 import UserAvatar from "../UserAvatar";
 import { getProfile } from "@/lib/dal";
+import Logo from "../Logo";
 
 export type NavLink = {
   icon?: React.ReactNode;
@@ -58,20 +58,7 @@ async function Header() {
     <header className="bg-background border-b border-primary/20">
       <div className="container">
         <div className="py-3 flex items-center justify-between">
-          <Link
-            href={ROUTES.ROOT}
-            className="flex items-center gap-2 px-2 rounded-lg"
-          >
-            <Image
-              src="/logo.svg"
-              alt="website logo svg image"
-              width={38}
-              height={38}
-            />
-            <span className="text-xl font-bold text-foreground">
-              {t("logo")}
-            </span>
-          </Link>
+          <Logo />
           <nav className="hidden lg:flex items-center gap-1">
             {navLinks.map((link, i) => {
               return (

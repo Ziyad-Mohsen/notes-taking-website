@@ -5,7 +5,7 @@ import { ROUTES } from "@/constants/routes";
 import { cn } from "@/lib/utils";
 import { SigninFormSchema } from "@/validation/auth/schema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Eye, EyeClosed, Loader2, Lock, User } from "lucide-react";
+import { Eye, EyeClosed, Lock, User } from "lucide-react";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { FormProvider, useForm } from "react-hook-form";
@@ -16,6 +16,7 @@ import { FieldGroup } from "@/components/ui/field";
 import { toast } from "sonner";
 import { login } from "@/actions/auth/login.action";
 import { confirmEmail } from "@/actions/auth/confirmEmail.action";
+import { Spinner } from "@/components/ui/Spinner";
 
 function SignInForm() {
   const t = useTranslations("pages.auth.login");
@@ -36,7 +37,7 @@ function SignInForm() {
 
       if (!success) {
         if (error?.code === "email_not_confirmed") {
-          toast.warning(error.message, {
+          toast.warning(error.code, {
             position: "top-center",
             action: {
               label: "confirm",
@@ -97,7 +98,7 @@ function SignInForm() {
           {t("buttons.login", {
             loading: isPending ? "true" : "false",
           })}
-          {isPending ? <Loader2 className="animate-spin" /> : <User />}
+          {isPending ? <Spinner /> : <User />}
         </Button>
 
         {/* Separator */}
@@ -115,7 +116,7 @@ function SignInForm() {
           <Link
             className={cn(
               buttonVariants({ variant: "link" }),
-              "p-1 font-bold text-md"
+              "p-1 font-bold text-md",
             )}
             href={ROUTES.SIGNUP}
           >

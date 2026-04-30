@@ -19,7 +19,7 @@ export async function updateSession(request: NextRequest) {
           });
         },
       },
-    }
+    },
   );
 
   const {
@@ -27,12 +27,31 @@ export async function updateSession(request: NextRequest) {
   } = await supabase.auth.getUser();
 
   const pathname = request.nextUrl.pathname;
+  const isAuthRoute = pathname.startsWith("/auth");
+  const isCompleteProfile = pathname === ROUTES.COMPLETE_PROFILE;
+  const isWorkspace = pathname.startsWith(ROUTES.WORKSPACE);
 
-  if (user && pathname.startsWith("/auth")) {
-    return NextResponse.redirect(new URL(ROUTES.WORKSPACE, request.url));
+  if (user && isAuthRoute) {
+    const { data: profile } = await supabase
+      .from("profiles")
+      .select("id")
+      .eq("id", user.id)
+      .single();
+
+    console.log(profile, user);
+
+    if (!profile && !isCompleteProfile) {
+      return NextResponse.redirect(
+        new URL(ROUTES.COMPLETE_PROFILE, request.url),
+      );
+    }
+
+    if (profile && !isWorkspace) {
+      return NextResponse.redirect(new URL(ROUTES.WORKSPACE, request.url));
+    }
   }
 
-  if (!user && pathname.startsWith("/workspace")) {
+  if (!user && isWorkspace) {
     return NextResponse.redirect(new URL(ROUTES.LOGIN, request.url));
   }
 
