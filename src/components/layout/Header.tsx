@@ -15,6 +15,7 @@ import ChangeLanguage from "../ChangeLanguage";
 import { getTranslations } from "next-intl/server";
 import UserAvatar from "../UserAvatar";
 import { getProfile } from "@/lib/dal";
+import Banner from "./Banner";
 
 export type NavLink = {
   icon?: React.ReactNode;
@@ -55,7 +56,8 @@ async function Header() {
   const profile = await getProfile();
 
   return (
-    <header className="bg-background border-b border-primary/20">
+    <header className="bg-background border-b border-primary/20 sticky top-0 start-0 z-10">
+      <Banner />
       <div className="container">
         <div className="py-3 flex items-center justify-between">
           <Link
