@@ -1,0 +1,225 @@
+{
+  "metadata": {
+    "title": "Noqta",
+    "description": "Noqta is a powerful yet simple note-taking app designed for clarity and productivity. Capture ideas, organize thoughts, and never lose track of what's important."
+  },
+  "layout": {
+    "header": {
+      "logo": "Noqta",
+      "navLinks": {
+        "contact": "Contact",
+        "faqs": "FAQs",
+        "github": "Github",
+        "workspace": "Workspace"
+      },
+      "profile": {
+        "greetings": "Welcome👋"
+      },
+      "login": "Login",
+      "signup": "Signup"
+    },
+    "footer": {
+      "logo": "Noqta",
+      "rights": "All rights reserved.",
+      "builtBy": "Built by",
+      "developerName": "Ziad Mohsen"
+    }
+  },
+  "modals": {
+    "imageCrop": {
+      "title": "Crop Your Image",
+      "description": "Adjust the crop area to select the portion of your image you want to use. You can resize and reposition the crop box as needed.",
+      "applyCrop": "Apply Crop",
+      "reset": "Reset",
+      "cancel": "Cancel",
+      "noImageSelected": "No image selected. Please select an image file first."
+    }
+  },
+  "pages": {
+    "landing": {
+      "hero": {
+        "tagline": "Your thoughts, beautifully organized",
+        "headline": "Your Second Brain, ",
+        "headlineHighlight": "Reimagined.",
+        "description": "Noqta is a powerful yet simple note-taking app designed for clarity and productivity. Capture ideas, organize thoughts, and never lose track of what's important.",
+        "ctaPrimary": "Get Started",
+        "ctaSecondary": "Explore Features",
+        "features": {
+          "autoSave": "Auto Save",
+          "privacyFirst": "Privacy-first",
+          "darkMode": "Dark Mode",
+          "beautifulUI": "Beautiful UI"
+        }
+      },
+      "features": {
+        "title": "Powerful Features",
+        "description": "Everything you need to capture, organize, and find your notes effortlessly.",
+        "items": {
+          "quickNoteCreation": {
+            "title": "Quick Note Creation",
+            "description": "Create notes instantly with auto-save. Never lose your thoughts again."
+          },
+          "powerfulSearch": {
+            "title": "Powerful Search",
+            "description": "Find any note in seconds by searching titles, content, or tags."
+          },
+          "smartOrganization": {
+            "title": "Smart Organization",
+            "description": "Organize with folders, tags, and custom colors for visual clarity."
+          },
+          "builtInTodos": {
+            "title": "Built-in To-Dos",
+            "description": "Create checklists within notes to track tasks and stay productive."
+          },
+          "richTextEditor": {
+            "title": "Rich Text Editor",
+            "description": "Format your notes with bold, italic, headings, lists, and code blocks."
+          },
+          "pinFavorite": {
+            "title": "Pin & Favorite",
+            "description": "Keep important notes at the top and mark favorites for quick access."
+          },
+          "darkMode": {
+            "title": "Dark Mode",
+            "description": "Seamless dark/light theme switching for comfortable note-taking anytime."
+          },
+          "smartTrash": {
+            "title": "Smart Trash",
+            "description": "Deleted notes stay in trash for 30 days before permanent removal."
+          },
+          "keyboardShortcuts": {
+            "title": "Keyboard Shortcuts",
+            "description": "Power-user shortcuts: Ctrl+N for new note, Ctrl+K for search, and more."
+          }
+        }
+      }
+    },
+    "auth": {
+      "layout": { "homeLink": "Home" },
+      "login": {
+        "header": "Welcome Back",
+        "subtext": "Enter your email and password",
+        "buttons": {
+          "login": "{loading, select, true {Logging…} false {Login} other {Login} }",
+          "or": "or",
+          "noAccount": "Don't have account?",
+          "signup": "Sign up"
+        },
+        "fields": {
+          "name": "Name",
+          "namePlaceholder": "John Doe",
+          "username": "Username",
+          "usernamePlaceholder": "john.doe",
+          "email": "Email",
+          "emailPlaceholder": "you@example.com",
+          "password": "Password",
+          "passwordPlaceholder": "••••••••",
+          "confirmPassword": "Confirm Password",
+          "confirmPasswordPlaceholder": "••••••••"
+        },
+        "errors": {
+          "emailInvalid": "Invalid email address.",
+          "passwordRequired": "Password is required",
+          "mustAcceptTerms": "You must accept the terms of service and privacy policy"
+        }
+      },
+      "signup": {
+        "header": "Welcome to noqta",
+        "steps": {
+          "enterInfo": "Choose Sign up method",
+          "termsPrivacy": "Terms & Privacy"
+        },
+        "fields": {
+          "name": "Name",
+          "namePlaceholder": "John Doe",
+          "username": "Username",
+          "usernamePlaceholder": "john.doe",
+          "email": "Email",
+          "emailPlaceholder": "you@example.com",
+          "password": "Password",
+          "passwordPlaceholder": "••••••••",
+          "confirmPassword": "Confirm Password",
+          "confirmPasswordPlaceholder": "••••••••"
+        },
+        "buttons": {
+          "back": "Back",
+          "next": "Next",
+          "createAccount": "{loading, select, true {Creating account…} false {Create account} other {Create account} }",
+          "or": "or",
+          "alreadyHaveAccount": "Already have account?",
+          "login": "Login"
+        },
+        "avatar": {
+          "fileTypes": "JPG, PNG or GIF. Max size 1MB",
+          "orChooseDefault": "or choose a default",
+          "defaultAvatars": "Default avatars"
+        },
+        "terms": {
+          "readAndAccept": "Please read and accept our terms of service and privacy policy to continue.",
+          "termsOfService": "Terms of Service",
+          "termsContent": "By using our service, you agree to comply with our terms of service. You are responsible for maintaining the confidentiality of your account and password. You agree to accept responsibility for all activities that occur under your account.",
+          "privacyPolicy": "Privacy Policy",
+          "privacyContent": "We respect your privacy and are committed to protecting your personal data. We collect and use your information only as necessary to provide our services. We do not sell your personal information to third parties.",
+          "acceptTerms": "I accept the",
+          "and": "and"
+        },
+        "errors": {
+          "emailInvalid": "Invalid email address.",
+          "passwordMinLength": "Password must be at least 8 characters.",
+          "passwordMaxLength": "Password is too long.",
+          "passwordUppercase": "Password must contain at least one uppercase letter.",
+          "passwordLowercase": "Password must contain at least one lowercase letter.",
+          "passwordNumber": "Password must contain at least one number.",
+          "passwordSpecial": "Password must contain at least one special character.",
+          "passwordSpaces": "Password cannot contain spaces.",
+          "passwordsNotMatch": "The passwords did not match",
+          "mustAcceptTerms": "You must accept the terms of service and privacy policy"
+        }
+      },
+      "verifyOtp": {
+        "header": "Verify your email",
+        "subtext": "Enter the 6-digit code sent to this email: {email}",
+        "buttons": {
+          "verify": "{loading, select, true {Verifying…} false {Verify code} other {Verify code} }",
+          "resend": "Resend"
+        },
+        "footer": {
+          "noCode": "Didn't receive the code?"
+        },
+        "toasts": {
+          "codeSent": "New OTP code was sent"
+        }
+      },
+      "completeProfile": {
+        "header": "Complete your profile",
+        "steps": {
+          "userInfo": "Enter you profile info",
+          "uploadAvatar": "Choose your avatar"
+        },
+        "fields": {
+          "name": "Name",
+          "namePlaceholder": "John Doe",
+          "username": "Username",
+          "usernamePlaceholder": "john.doe"
+        },
+        "buttons": {
+          "back": "Back",
+          "next": "Next",
+          "createAccount": "{loading, select, true {Starting…} false {Start} other {Start} }"
+        },
+        "avatar": {
+          "fileTypes": "JPG, PNG or GIF. Max size 1MB",
+          "orChooseDefault": "or choose a default",
+          "defaultAvatars": "Default avatars"
+        },
+        "errors": {
+          "nameRequired": "Name field is required",
+          "nameMaxLength": "Name must be at most 32 characters",
+          "usernameMinLength": "Username must be at least 3 characters",
+          "usernameMaxLength": "Username must be at most 32 characters",
+          "usernameInvalid": "Only letters, numbers, and underscores are allowed"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,48 @@
+import React, { Fragment } from "react";
+import { FormStep } from "./signup/types";
+import { cn } from "@/lib/utils";
+import { Check } from "lucide-react";
+
+function StepsIndicator<FormSchema>({
+  steps,
+  currentStep,
+}: {
+  steps: FormStep<FormSchema>[];
+  currentStep: number;
+}) {
+  return (
+    <div className="flex items-center justify-center">
+      <div className="flex items-center gap-2">
+        {steps.map((step, i) => {
+          return (
+            <Fragment key={i}>
+              {/* Circle */}
+              <div
+                className={cn(
+                  "w-5 h-5 rounded-full flex items-center justify-center p-4 transition-colors",
+                  currentStep >= i
+                    ? "bg-primary text-primary-foreground"
+                    : "bg-secondary text-secondary-foreground"
+                )}
+              >
+                <div>{currentStep <= i ? i + 1 : <Check size={18} />}</div>
+              </div>
+
+              {/* Line */}
+              {i < steps.length - 1 && (
+                <div
+                  className={cn(
+                    "w-10 h-1 rounded-lg transition-colors",
+                    currentStep > i ? "bg-primary" : "bg-secondary"
+                  )}
+                />
+              )}
+            </Fragment>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+export default StepsIndicator;
