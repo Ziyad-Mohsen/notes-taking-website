@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import "@/styles/globals.css";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 import { Toaster } from "sonner";
@@ -44,7 +43,12 @@ export default async function RootLayout({
     >
       <body className={cn(locale == "ar" ? cairo.className : outfit.className)}>
         <NextIntlClientProvider messages={messages}>
-          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            storageKey="noqta_theme"
+            enableSystem
+          >
             <Toaster richColors />
             {children}
           </ThemeProvider>

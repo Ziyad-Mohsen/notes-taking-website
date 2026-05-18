@@ -4,6 +4,9 @@
     "description": "Noqta is a powerful yet simple note-taking app designed for clarity and productivity. Capture ideas, organize thoughts, and never lose track of what's important."
   },
   "layout": {
+    "banner": {
+      "text": "🚧 This website is currently under development. Some features, content, or pages may be incomplete or unavailable."
+    },
     "header": {
       "logo": "Noqta",
       "navLinks": {

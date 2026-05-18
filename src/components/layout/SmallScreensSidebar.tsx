@@ -11,6 +11,7 @@ import ChangeLanguage from "../ChangeLanguage";
 import { useTranslations } from "next-intl";
 import { UserProfile } from "@/types/user.types";
 import UserAvatar from "../UserAvatar";
+import { ButtonGroup, ButtonGroupSeparator } from "../ui/button-group";
 
 function SmallScreensSidebar({
   profile,
@@ -84,10 +85,11 @@ function SmallScreensSidebar({
         >
           <X />
         </Button>
-        <div className="absolute top-3 start-3 bg-muted text-muted-foreground border rounded-lg">
+        <ButtonGroup className="absolute top-3 start-3 border rounded-lg">
           <ChangeLanguage />
+          <ButtonGroupSeparator className="bg-border" />
           <ThemeToggler />
-        </div>
+        </ButtonGroup>
 
         {navLinks.map((link, i) => {
           return (
